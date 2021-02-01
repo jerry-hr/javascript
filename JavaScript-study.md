@@ -77,12 +77,12 @@
 
 #### **JS基本数据类型**
 
-2. typeof运算符，可以检测值，或变量的类型
+typeof运算符，可以检测值，或变量的类型
 
-   ```
-   typeof 5;//number
-   typeof '慕课网';//string
-   ```
+```
+typeof 5;//number
+typeof '慕课网';//string
+```
 
 3. ![基本数据类型](C:\Users\11869\Desktop\JavaScript-study\images\基本数据类型.png)
 
