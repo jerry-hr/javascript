@@ -349,7 +349,7 @@
    现在还是字符串'0.30',要转为数字  Number((0.1 + 0.2).toFixed(2));//0.30
    ```
 
-5. 幂和开根号
+5. **幂和开根号**
    $$
    Math.pow(2,3) = 2^3
    $$
@@ -358,7 +358,7 @@
    Math.sqrt(81) = \sqrt{81}
    $$
 
-6. 向上取整===Math.ceil()
+6. **向上取整===Math.ceil()**
 
    ```
    Math.ceil(2.4) //3
@@ -366,7 +366,7 @@
    Math.ceil(2)  //2
    ```
 
-7. 向下取整===Math.floor()
+7. **向下取整===Math.floor()**
 
    ```
    Math.floor(2.4)  //2
@@ -374,7 +374,7 @@
    Math.floor(2)  //2
    ```
 
-8. 相等和全等
+8. **相等和全等**
 
    1. 两个等号：==  不比较值的类型，它会进行隐式转换后比较值是否相等
 
@@ -398,7 +398,7 @@
       NaN === NaN //false
       ```
 
-9. 如何判断某变量值为NaN
+9. **如何判断某变量值为NaN**
 
    isNaN()函数可以用来判断变量值是否为NaN
 
@@ -416,7 +416,7 @@
    isNaN('3天') //true	    Number('3天') //NaN
    ```
 
-10. 不相等和不全等
+10. **不相等和不全等**
 
     `! = 表示不相等`      `! ==  表示不全等`
 
@@ -427,6 +427,183 @@
     5 !== '5' //true
     ```
 
-11. javascript中无连等，3<=a<12 错误语句
+11. **javascript中无连等**，3 <= a < 12 错误语句
 
-    
+12. **非运算**
+
+    1. 非运算 ：！表示 "非"，也可以称为"置返运算"
+
+    2. ！是一个“单目运算符”,只需要一个操作数
+
+    3. 置返运算的结果一定是布尔值
+
+       ```
+       ! true //false
+       ! false //true
+       ! 0 //true
+       ! undefined //true
+       ! '' //true
+       ! 'imooc' //false (只要''号里有内容就是正性)
+       两个!!可将值本来的性质体现出来正负性
+       !! true //true
+       !! 0 //false
+       !! '' //false
+       !! 'imooc' //true
+       ```
+
+13. **与运算**=== &&  **都真才真**
+
+    ```
+    true && true //true
+    true && false //false
+    false && false //true
+    ```
+
+14. **或运算**=== ||  **有真就真**
+
+    ```
+    true || true //true
+    true ||false //true
+    false || true //true
+    false ||false //false
+    ```
+
+15. **短路计算**
+
+    1. **a && b   都真才真**
+       $$
+       a(真)=
+       	\begin{cases}
+       		 b真为真& \text{}\\
+       		 b假为假& \text{}
+       	\end{cases}
+       	表达式为b
+       $$
+
+       $$
+       a(假)=b一定为假(b被短路了) 表达式为a 
+       $$
+
+       ```
+       判断真假用Boolean()
+       3 && 6 //6                         Boolean(3) true = 6
+       undefined && 15 //undefined        Boolean(undefined) false = undefined
+       15 && undefined //undefined        Boolean(15) true = undefined
+       null && 2 //null                   Boolean(null) false = null
+       '' && 6 //''                       Boolean('') false = ''
+       NaN && undefined //NaN             Boolean(NaN) false = NaN
+       
+       ```
+
+       小方法：
+
+       1. 如果有一个操作数是**null**,返回**null**
+       2. 如果有一个操作数是**NaN**，返回**NaN**
+       3. 如果有一个操作数是**undefined**,返回**undefined**
+       4. 多个操作数时，当所有操作数都为真时，则返回最后一个操作数
+
+    2. **a || b   有真就真**
+       $$
+       a(假)=
+       	\begin{cases}
+       		 b真为真& \text{}\\
+       		 b假为假& \text{}
+       	\end{cases}
+       	表达式为b
+       $$
+
+       $$
+       a(真)=
+       	不用看b (b被短路)
+       	表达式为a
+       $$
+
+       ```
+       3 || 6 //3
+       0 || 6 //6
+       null || undefined //undefined
+       'a' || 'b' //'a'
+       ```
+
+16. **逻辑运算的优先级是：非>与>或**
+
+    ```
+    !true || true //true
+    3 && 4 || 5 && 6 //4
+    ```
+
+17. **赋值运算也产生值,等号后面的值将作为“赋值运算的值”**
+
+    ```
+    var a;
+    console.log(a = 4); //4
+    可以连续使用赋值运算符
+    var a,b,c;
+    a = b = c = 5;
+    console.log(a); //5
+    console.log(b); //5
+    console.log(c); //5
+    ```
+
+18. **快捷赋值===表示在原数值基础上进一步进行运算**
+
+    1. ```
+       var a = 3;
+       a += 5;  //a = a + 5
+       console.log(a); //8
+       ```
+
+    2. ```
+       var c = 16;
+       c %= 3;  //c = c % 3
+       console.log(c); //1
+       ```
+
+    3. ```
+       var a = 3;
+       a++;  //a = a + 1
+       console.log(a); //4
+       ```
+
+    4. a++  和   ++a  的区别
+
+       1. **a++   先用再加**
+
+          ```
+          var a = 3;
+          var b = a++;
+          console.log(b); //3
+          console.log(a); //4
+          ```
+
+       2. **++a   先加再用**
+
+          ```
+          var a = 3;
+          var b = ++a;
+          console.log(b); //4
+          console.log(a); //4
+          ```
+
+19. 综合表达式
+
+    1. 运算顺序： 非运算  >  数学运算  >  关系运算  >  逻辑运算
+
+    2. 变量的范伟表示：验证变量a是否介于5-12之间== a>=5 && a<=12
+
+    3. $$
+       闰年判断=
+       \begin{cases}
+       		 1.能被4整除且不能被100整除& \text{}\\
+       		 2.能被100整除，也能被400整除& \text{}
+       	\end{cases}
+       $$
+
+    4. ```
+       var a = 3;
+       var b = 4;
+       alert(a++ + b++ + ++a + ++b);//a++先用后加，++a先加后用
+              3  +  4  +  5  +  6 = 18
+       ```
+
+       
